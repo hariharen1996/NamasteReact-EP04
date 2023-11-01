@@ -1,0 +1,105 @@
+Assignment - Episode04 - Talk is cheap, show me the code!
+
+Theory
+
+1. Is JSX mandetory for React?
+JSX is an html-like syntax, which is known as javascript xml. It is mandetory in react, as it is super fast and you can write better React code. Since it is html-like syntax, we can provide an good structure using JSX and we can render it in react dom.
+const heading = <span>React</span>
+
+2. Is ES6 mandetory for React?
+ES6 is an ecmascript used in react, which makes code more readable and accesible and with the help of ES6, we can use classes, variable, spread and rest parameters.
+If we dont use ES6, the alternative way is by using create-react-class. ES6 is not mandetory but it is an good way to use in react.
+
+3. {TitleComponent} vs {<TitleComponent />} vs {<TitleComponent></TitleComponent>} in JSX?
+    => {TitleComponent} - This is used to add an javascript variable inside an JSX 
+            const TitleComponent = 45000
+            const Total = () => (
+                {TitleComponent}
+            )
+    
+    => {<TitleComponent />} - This is used to add as an React Components inside the JSX, that is component inside an component which is known as composable components
+            const TitleComponent = () => {
+                return <h1>React Components</h1>
+            }
+            const Display = () => {
+                return(
+                    <div>
+                       <TitleComponent />
+                    </div>
+                )
+            }
+    
+    => {<TitleComponent></TitleComponent>} - This is used to add as an React Components in JSX, if we have any children elements to render in it 
+
+4. How can i write comments in JSX?
+Single line comments: (//)
+Multi line comments: ({/**/})
+
+5. What is <React.Fragment></React.Fragment> and <></>?
+It is an feature in react, which is used to return multiple elements from react component by allowing you to group a list of children without adding extra nodes to the DOM. It’s is a common practice in React to render dynamically multiple sibling components. When returning JSX from a React component we need to maintain the tree structure of the HTML elements. The component must return at most 1 top-level node. Fragments let us deal with this problem in a very effective way.
+<React.Fragment></React.Fragment> and <></> => both are same
+
+const UlList = () => {
+    return(
+        <div>
+           <ul>
+             <ListItems />
+           </ul>
+        </div>
+    )
+}
+
+const ListItems = () => {
+    return(
+        <React.Fragment> => Here we can also give <>
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+        </React.Fragment> => Here we can also give </>
+    )
+}
+
+
+6. What is virtual DOM in React?
+React Virual DOM is an lightweight copy of an actual DOM, which is fast. It cant update the html directly, instead it takes an copy of the dom and updates the dom without affecting the actual dom. In React, everything is treated as a component be it a functional component or class component. A component can contain a state. Whenever the state of any component is changed react updates its Virtual DOM tree. So, whenever there is a change in the state of any element, a new Virtual DOM tree is created. This new Virtual DOM tree is then compared with the previous Virtual DOM tree and make a note of the changes. After this, it finds the best possible ways to make these changes to the real DOM. Now only the updated elements will get rendered on the page again
+
+7. What is Reconciliation in React?
+React maintains two Virtual DOM at each time, one contains the updated Virtual DOM and one which is just the pre-update version of this updated Virtual DOM. Now it compares the pre-update version with the updated Virtual DOM and figures out what exactly has changed in the DOM like which components have been changed. This process of comparing the current Virtual DOM tree with the previous one is known as ‘diffing’. Once React finds out what exactly has changed then it updates those objects only, on real DOM. 
+
+React uses something called batch updates to update the real DOM. It just means that the changes to the real DOM are sent in batches instead of sending any update for a single change in the state of a component. 
+
+We have seen that the re-rendering of the UI is the most expensive part and React manages to do this most efficiently by ensuring that the Real DOM receives batch updates to re-render the UI. This entire process of transforming changes to the real DOM is called Reconciliation.
+
+8. What is React Fiber?
+It is an conecpt of reactJS that is used to render a system faster and smoother. React fiber helps to compare two dom trees and diff them. A fiber in a react is just a plain JavaScript object with some properties. The current react reconciler, the fiber reconciler is named after this object and is the default reconciler since react version 16.
+
+9. why do we need keys in react? when do we need keys in react?
+The keys in react makes the elements unique and also improves the performance. It identifies which items has been changed, added or removed.
+
+10. Can we use index as keys in react?
+we can use index as keys in react, but it is not recomended. Using index might result in performance issues and data binding issues in case reordering in the form of sorting, filtering might happen.
+
+11. What is props in react?
+Props are like attributes we use in javascript, which is used to pass data from one component to another component
+
+12. What is Config driven UI?
+Contolling the UI using the data or conflits is config driven UI. It allows you to create dynamic and customizable UIs without hard coding them. When you build an real world application like swiggy, so you want to display different restaurents on different places, we control our fontend using it known as using Config-Driven UI. The data comes from the backend API
+
+coding
+
+Build a Food Ordering App 
+    => Think cool name for your app 
+    => Build a Layout
+    => Build a AppLayout
+    => Build a Header Component with Logo and Nav Items Cart 
+    => Build a Body Component 
+         => Build RestaurentList Component 
+         => Build RestaurentCard Component
+             => use static data initialy
+             => make your card dynamic(pass is props)
+                 => props - passing arguments to a function  - use destructing and spread operator
+                 => render your cards with dynamic data of restaurents
+                 => use array.map to render all the restaurents
+
+ 
